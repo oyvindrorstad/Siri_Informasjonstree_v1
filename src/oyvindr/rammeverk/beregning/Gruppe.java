@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Gruppe {
 
-    String typeID;
-    String forekomstID;
+   // String typeID;
+  // String forekomstID;
 
     GruppeKey gruppeKey;
 
@@ -15,7 +15,7 @@ public class Gruppe {
 
 
     public Gruppe (String typeID, String forekomstID) {
-
+        gruppeKey = new GruppeKey(typeID, forekomstID);
         this.gruppeKey.typeID = typeID;
         this.gruppeKey.forekomstID = forekomstID;
     }
@@ -29,18 +29,11 @@ public class Gruppe {
         felter.put(felt.getFeltType(), felt);
     }
 
-    public String getForekomstID() {
-        return forekomstID;
-    }
-
-    public String getEtypeID() {
-        return typeID;
-    }
 
     public void skrivUtGruppeTre(Integer level) {
         String prefix = new String(level.toString());
         //prefix.format("%" + level*5 + "s", "prefix");
-        System.out.println(String.format("%" + level*5 + "s", level.toString()) + ":"  + " Gruppe:" + typeID + " forekomstID: " + forekomstID);
+        System.out.println(String.format("%" + level*5 + "s", level.toString()) + ":"  + " Gruppe:" + gruppeKey.typeID + " forekomstID: " + gruppeKey.forekomstID);
 
 
         felter.forEach((k,v)->v.skrivUt(level));
