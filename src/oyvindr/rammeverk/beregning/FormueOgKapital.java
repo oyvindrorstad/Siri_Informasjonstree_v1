@@ -3,12 +3,13 @@ package oyvindr.rammeverk.beregning;
 /**
  * Created by x0xoyr on 27.01.17.
  */
-public class BankFormue {
+public class FormueOgKapital {
 
-    public Gruppe opprettBankFormue () {
+    public Gruppe opprettBankFormue (Gruppe mother) {
 
         // G2
         Gruppe g2FormueOgKapital = new Gruppe("FormuOgKapital", "na");
+        mother.legggTilUnderGruppe(g2FormueOgKapital);
 
         // G3
         Gruppe g3_Bank1 = new Gruppe("Bank", "DnB");

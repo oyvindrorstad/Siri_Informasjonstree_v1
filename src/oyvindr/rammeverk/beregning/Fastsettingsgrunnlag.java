@@ -1,6 +1,6 @@
 package oyvindr.rammeverk.beregning;
 
-public class Main {
+public class Fastsettingsgrunnlag {
 
     public static void main(String[] args) {
 
@@ -9,16 +9,15 @@ public class Main {
 
     public static void OpprettSkattepliktRootGruppe() {
 
-        Gruppe Fastsettingsgrunnlag = new Gruppe("Fastsettingsgrunnlag", "na");
-        Fastsettingsgrunnlag.legggTilFelt(new InfoFelt("Fastsettingsgrunnlag", "02048012345"));
+        Gruppe fastsettingsgrunnlag = new Gruppe("Fastsettingsgrunnlag", "na");
+        fastsettingsgrunnlag.legggTilFelt(new InfoFelt("Fastsettingsgrunnlag", "02048012345"));
 
-
-        BankFormue bankFormue = new BankFormue();
-        Fastsettingsgrunnlag.legggTilUnderGruppe(bankFormue.opprettBankFormue());
-
+        // Legg til undergruppe g2FormueOgKapital
+        FormueOgKapital bankFormue = new FormueOgKapital ();
+        bankFormue.opprettBankFormue(fastsettingsgrunnlag);
 
         // Print
-        Fastsettingsgrunnlag.skrivUtGruppeTre(1);
+        fastsettingsgrunnlag.skrivUtGruppeTre(1);
 
 
         /* Opprett summert bankgruppe fra
