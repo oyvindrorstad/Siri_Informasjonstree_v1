@@ -8,19 +8,21 @@ public class Gruppe {
     String typeID;
     String forekomstID;
 
+    GruppeKey gruppeKey;
+
     Map<String, InfoFelt> felter = new HashMap<String, InfoFelt>();
-    Map<String, Gruppe> underGrupper = new HashMap<String, Gruppe>();
+    Map<GruppeKey, Gruppe> underGrupper = new HashMap<GruppeKey, Gruppe>();
 
 
-    public Gruppe (String etypeID, String forekomstID) {
+    public Gruppe (String typeID, String forekomstID) {
 
-        this.typeID = etypeID;
-        this.forekomstID = forekomstID;
+        this.gruppeKey.typeID = typeID;
+        this.gruppeKey.forekomstID = forekomstID;
     }
 
     public void legggTilUnderGruppe ( Gruppe gruppe) {
 
-        underGrupper.put (gruppe.getForekomstID(), gruppe);
+        underGrupper.put (gruppe.gruppeKey, gruppe);
     }
 
     public void legggTilFelt(InfoFelt felt) {
@@ -45,6 +47,15 @@ public class Gruppe {
         underGrupper.forEach((k,v)->v.skrivUtGruppeTre(level+1));
     }
 
+    public long SummerOverGruppe(Gruppe gruppe, String typeID) {
+        /*
+        String result = gruppe.underGrupper.entrySet().stream()
+                .filter(map -> typeID.equals(map.getKey()))
+                .map(map -> map.getValue())
+                .average()
+                .getAsDouble();*/
+        return 0;
+    }
 
 }
 
