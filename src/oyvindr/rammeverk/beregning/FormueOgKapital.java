@@ -5,11 +5,10 @@ package oyvindr.rammeverk.beregning;
  */
 public class FormueOgKapital {
 
-    public Gruppe opprettBankFormue (Gruppe mother) {
+    public static Gruppe opprettBankFormue () {
 
         // G2
         Gruppe gFormueOgKapital = new Gruppe("FormuOgKapital", "1");
-        mother.legggTilUnderGruppe(gFormueOgKapital);
 
         // G3
         Gruppe gBank1 = new Gruppe("Bank", "DnB");
@@ -38,6 +37,31 @@ public class FormueOgKapital {
         gBank2.legggTilUnderGruppe(gKonto3);
 
         return gFormueOgKapital;
+    }
 
+    public static Gruppe opprettSummertBankGruppe (Gruppe formueOgKapitalGruppe) {
+        /* Opprett summert bankgruppe fra
+        SPESIFIKASJON:
+        For hver unik forekomst av source::FORMUEOGKAPITAL:BANK identifisert ved :BANK.Navn
+            opprett target::SUMBANK identifisert ved :BANK.Navn
+            Mapp:
+                SUMBANK.bankensnavn = BANK.navn;
+                SUMBANK.bankensorgnr = BANK.bankensorgnr;
+
+            Aggregering:
+                SUMBANK.rentesum = SUM OVER (BANK.KONTO.renter);
+        */
+        Gruppe sumBank = new Gruppe(("OppsummeringBanker"), "na");
+
+        // IKKE KOMPLETT:::::::::::::::::......................
+        formueOgKapitalGruppe.underGrupper.entrySet().stream()
+                .filter(s -> s.getKey().getTypeID().equals("Bank"))
+                .filter(s -> {
+                    System.out.println("filter: " + s);
+                    return true;
+                })
+                .forEach(s -> System.out.println("forEach: " + s));
+
+        return sumBank;
     }
 }
