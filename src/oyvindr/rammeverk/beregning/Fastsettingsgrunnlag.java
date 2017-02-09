@@ -4,7 +4,8 @@ public class Fastsettingsgrunnlag {
 
     public static void main(String[] args) {
 
-        OpprettSkattepliktRootGruppe();
+        InfoTre.test();
+        //OpprettSkattepliktRootGruppe();
     }
 
     public static void OpprettSkattepliktRootGruppe() {
