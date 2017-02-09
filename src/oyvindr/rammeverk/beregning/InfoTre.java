@@ -24,7 +24,6 @@ public class InfoTre {
         tre.put("FormueInntekt.Diverse.Renter",                     "7777");
         tre.put("FormueInntekt.Bank(DnB).Orgnr",                    "987654321");
 
-
         // sum av DnB verdier
         long antall_DnB = tre.entrySet().stream()
                 .filter(e -> e.getKey().contains("DnB"))
@@ -39,14 +38,18 @@ public class InfoTre {
                 .sum();
 
 
-        long sum_DnB_renter = tre.entrySet().stream()
-                .filter(e -> e.getKey().contains("DnB"))
+        long sum_SpB1_renter = tre.entrySet().stream()
+                .filter(e -> e.getKey().contains("SpB1"))
                 .filter(e -> e.getKey().contains("Renter"))
                 .mapToInt(e -> Integer.parseInt(e.getValue()))
                 .sum();
+        tre.put("FormueInntekt.Bank(SpB1).SumRenter", String.valueOf(sum_SpB1_renter));
 
         //String test = tre.get("FormueInntekt.Bank(DnB).Orgnr");
-        System.out.println("Dnb orgnr " + tre.get("FormueInntekt.Bank(DnB).Orgnr") + " Antall: " + antall_DnB + " SumDnb: " + sum_DnB + " DnBRenter:" + sum_DnB_renter);
+        System.out.println("Dnb orgnr " + tre.get("FormueInntekt.Bank(DnB).Orgnr") + " Antall: " + antall_DnB + " SumDnb: " + sum_DnB + " DnBRenter:" + sum_SpB1_renter);
+
+
+        tre.forEach((k,v)->System.out.println("Item : " + k + " Value : " + v));
     }
 
 }
