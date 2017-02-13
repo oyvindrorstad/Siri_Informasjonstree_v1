@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class InfoTre {
 
-    static HashMap<String, String> tre = new HashMap<String, String>();
+    static Map<String, String> tre = new HashMap<String, String>();
 
     static public void test() {
 
@@ -55,6 +55,7 @@ public class InfoTre {
 
         tre.forEach((k,v)->System.out.println("Item : " + k + " Value : " + v));
 
+        testAppend(tre);
         skivUtSortert();
     }
 
@@ -64,6 +65,25 @@ public class InfoTre {
                 .sorted((e1,e2)-> e1.getKey().compareTo(e2.getKey()))
                 .forEach(e->{ System.out.println("Key." + e.getKey() + " Value:" + e.getValue() );
         });
+    }
+
+    static private void testAppend (Map inMap) {
+
+            HashMap<String, String> newmap1 = new HashMap<String, String>();
+
+            newmap1.put("FormueInntekt.Bank(DnB).Konto(11111).Innskudd",    "11000");
+            newmap1.put("FormueInntekt.Bank(DnB).Konto(22222).OpptjenteRenter",      "222");
+            newmap1.put("FormueInntekt.Bank(DnB).Konto(22222).Innskudd",    "22000");
+            newmap1.put("FormueInntekt.Bank(SpB1).Konto(X22222).OpptjenteRenter",    "999");
+
+
+            System.out.println("Values in newmap1: "+ newmap1);
+
+            // put all values in newmap2
+            inMap.putAll(newmap1);
+
+            //System.out.println("Values in newmap2: "+ newmap2);
+
     }
 
 

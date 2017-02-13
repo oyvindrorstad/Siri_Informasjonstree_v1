@@ -1,10 +1,24 @@
 package oyvindr.rammeverk.beregning;
 
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+
 public class Fastsettingsgrunnlag {
 
     public static void main(String[] args) {
 
         InfoTre.test();
+        try {
+            Xml2Hashmap.test();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
         //OpprettSkattepliktRootGruppe();
     }
 
