@@ -10,16 +10,7 @@ public class Fastsettingsgrunnlag {
     public static void main(String[] args) {
 
         InfoTre.test();
-        try {
-            Xml2Hashmap.test();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
-        //OpprettSkattepliktRootGruppe();
+        OpprettSkattepliktRootGruppe();
     }
 
     public static void OpprettSkattepliktRootGruppe() {
