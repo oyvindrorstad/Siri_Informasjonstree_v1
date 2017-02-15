@@ -21,10 +21,11 @@ import org.xml.sax.SAXException;
 public class Xml2HashmapX3 {
 
     public static void main(final String[] args) throws SAXException, IOException, ParserConfigurationException {
-        new Xml2HashmapX3("test.xml");
+        Map<String, String> xmlHM = new HashMap<String, String>();
+        new Xml2HashmapX3("test.xml", xmlHM);
     }
 
-    public Xml2HashmapX3(final String file) throws SAXException, IOException, ParserConfigurationException {
+    public Xml2HashmapX3(final String file, Map<String, String> xmlHM) throws SAXException, IOException, ParserConfigurationException {
 
         File fXmlFile = new File("test.xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -32,7 +33,6 @@ public class Xml2HashmapX3 {
         Document doc = null;
         doc = dBuilder.parse(fXmlFile);
 
-        Map<String, String> xmlHM = new HashMap<String, String>();
         parse(doc, xmlHM, doc.getDocumentElement(), "melding");
 
         // skriv ut sortert
