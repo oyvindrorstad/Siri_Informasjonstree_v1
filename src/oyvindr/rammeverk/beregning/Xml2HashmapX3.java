@@ -27,7 +27,7 @@ public class Xml2HashmapX3 {
 
     public Xml2HashmapX3(final String file, Map<String, String> xmlHM) throws SAXException, IOException, ParserConfigurationException {
 
-        File fXmlFile = new File("test.xml");
+        File fXmlFile = new File(file);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = null;
@@ -55,4 +55,3 @@ public class Xml2HashmapX3 {
     }
 
 }
-
